@@ -4081,7 +4081,7 @@ spring.application.strategy.tracer.sentinel.args.output.enabled=true
 上述方式需要人工观察和干预，并不友好，使用者也可以通过集成如下蓝绿灰度告警监控模块来实现
 
 ① 网关和服务加上下面的类
-```xml
+```java
 @EventBus
 public class MySubscriber {
     @Subscribe
@@ -4096,9 +4096,16 @@ public class MySubscriber {
 spring.application.strategy.alarm.enabled=true
 ```
 ② 通过事件总线把告警数据alarmEvent.getContextMap()存储到ElasticSearch、MessageQueue、数据库等
+
 ③ 根据端到端的traceId对应的蓝绿灰度Header是否传递，是否相同，判断蓝绿灰度是否成功
+
 ④ 如果不相同，结合DevOps系统发送告警邮件或者通知
-⑤ 上下文具体信息列表参考com.nepxion.discovery.plugin.strategy.monitor.DefaultStrategyAlarm，示例如下：
+
+⑤ 上下文具体信息列表参考源码：
+```java
+com.nepxion.discovery.plugin.strategy.monitor.DefaultStrategyAlarm
+```
+示例如下：
 ```
 {n-d-service-group=discovery-guide-group, n-d-version={"discovery-guide-service-a":"1.0", "discovery-guide-service-b":"1.0"}, n-d-service-type=service, n-d-service-id=discovery-guide-service-b, n-d-service-env=env1, mobile=, n-d-service-region=qa, span-id=c37b54d7fec6bd07, n-d-service-zone=zone1, n-d-service-address=192.168.0.107:4001, trace-id=64c79e1ef68eecf3, n-d-service-version=1.0, user=}
 ```
