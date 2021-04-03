@@ -4107,7 +4107,7 @@ com.nepxion.discovery.plugin.strategy.monitor.DefaultStrategyAlarm
 ```
 示例如下：
 ```
-{n-d-service-group=discovery-guide-group, n-d-version={"discovery-guide-service-a":"1.0", "discovery-guide-service-b":"1.0"}, n-d-service-type=service, n-d-service-id=discovery-guide-service-b, n-d-service-env=env1, mobile=, n-d-service-region=qa, span-id=c37b54d7fec6bd07, n-d-service-zone=zone1, n-d-service-address=192.168.0.107:4001, trace-id=64c79e1ef68eecf3, n-d-service-version=1.0, user=}
+{n-d-service-group=discovery-guide-group, n-d-version={"discovery-guide-service-a":"1.0", "discovery-guide-service-b":"1.0"}, n-d-service-type=service, n-d-service-id=discovery-guide-service-b, n-d-service-env=env1, mobile=, n-d-service-region=qa, span-id=c37b54d7fec6bd07, n-d-service-zone=zone1, n-d-service-address=192.168.0.107:4001, trace-id=64c79e1ef68eecf3, n-d-service-version=1.0}
 ```
 
 ### 全链路指标监控
