@@ -5009,7 +5009,7 @@ spring.application.strategy.business.request.headers=user;mobile;location
 ## 自动扫描目录
 自动扫描目录功能为省掉手工配置扫描目录而设定的，当使用者手工配置了扫描目录，则采用使用者配置的目录，如果没配置，则采用自动扫描目录的方式
 
-如下是手工配置扫描目录的样例
+如下配置是手工配置扫描目录的样例
 ```
 # 路由策略的时候，需要指定对业务RestController类的扫描路径。此项配置作用于RPC方式的调用拦截、消费端的服务隔离和调用链三项功能
 spring.application.strategy.scan.packages=com.nepxion.discovery.guide.service
