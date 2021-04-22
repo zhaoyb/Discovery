@@ -5007,7 +5007,7 @@ spring.application.strategy.business.request.headers=user;mobile;location
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 需要注意，该文件在整个服务目录和包中只能出现一次
 
 ## 自动扫描目录
-自动扫描目录功能为省掉手工配置扫描目录而设定的，当使用者手工配置扫描目录，则采用使用者配置的目录，如果没配置，则采用自动扫描目录的方式
+自动扫描目录功能为省掉手工配置扫描目录而设定的，当使用者手工配置了扫描目录，则采用使用者配置的目录，如果没配置，则采用自动扫描目录的方式
 
 如下是手工配置扫描目录的样例
 ```
@@ -5025,7 +5025,7 @@ spring.application.strategy.auto.scan.recursion.enabled=false
 
 ② 自动扫描目录的逻辑
 
-SpringBoot入口设定扫描目录为com.a，com.a目录下有个Spring对象通过ComponentScan方式设定扫描目录为com.b，com.b目录下有个Spring对象通过ComponentScan方式设定扫描目录为com.c，那么最终计算出来的目录为
+在假设的场景中，SpringBoot入口设定扫描目录为com.a，com.a目录下有个Spring对象通过ComponentScan方式设定扫描目录为com.b，com.b目录下有个Spring对象通过ComponentScan方式设定扫描目录为com.c，那么最终计算出来的目录为
 
 嵌套扫描下，得到的扫描目录是
 ```
@@ -5039,7 +5039,7 @@ SpringBoot入口所在的目录;com.a
 
 ③ 扩展获取自动扫描目录
 
-使用者如果希望能得到该自动扫描目录，可以通过如下代码
+使用者可以通过如下代码得到自动扫描目录
 ```java
 public class MyService {
     @Autowired
