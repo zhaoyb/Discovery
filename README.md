@@ -969,7 +969,7 @@ zuul
 
 > 对于Spring Cloud 202x版，由于它采用的负载均衡Spring Cloud LoadBalancer是基于异步的WebFlux，所以必须加上DiscoveryAgent，如下方式
 
-> -javaagent:C:/opt/discovery-agent/discovery-agent-starter-${discovery.agent.version}.jar -Dthread.scan.packages=reactor.core.publisher
+> -javaagent:C:/opt/discovery-agent/discovery-agent-starter-${discovery.agent.version}.jar
 
 | URL | 调用方式 |
 | --- | --- |
@@ -2648,24 +2648,33 @@ ThreadLocal的作用是提供线程内的局部变量，在多线程环境下访
 例如
 
 ```
--javaagent:C:/opt/discovery-agent/discovery-agent-starter-${discovery.agent.version}.jar -Dthread.scan.packages=reactor.core.publisher;org.springframework.aop.interceptor;com.netflix.hystrix;com.nepxion.discovery.guide.service.feign
+-javaagent:C:/opt/discovery-agent/discovery-agent-starter-${discovery.agent.version}.jar -Dthread.scan.packages=com.nepxion.discovery.guide.service.feign
 ```
 
 参数说明
 - /discovery-agent：Agent所在的目录，需要对应到实际的目录上
-- `-D`thread.scan.packages：Runnable，Callable对象所在的扫描目录，该目录下的Runnable，Callable对象都会被装饰。该目录最好精细和准确，这样可以减少被装饰的对象数，提高性能，目录如果有多个，用“;”分隔。参数定义为
-    - WebFlux Reactor异步场景下的扫描目录对应为reactor.core.publisher，可以解决基于Reactor的Spring Cloud LoadBalancer异步负载均衡下的上下文传递
-    - `@`Async场景下的扫描目录对应为org.springframework.aop.interceptor
-    - Hystrix线程池隔离场景下的扫描目录对应为com.netflix.hystrix
-    - 线程，线程池的扫描目录对应为自定义Runnable，Callable对象所在类的目录
-    - 上述扫描路径如果含有“;”，可能会在某些操作系统中无法被识别，请用`""`进行引入，例如，-Dthread.scan.packages="com.abc;com.xyz"
+- `-D`thread.scan.packages：Runnable/Callable/Thread/ThreadPool等异步类所在的扫描目录，该目录下的Runnable/Callable/Thread/ThreadPool等异步类都会被装饰。该目录最好精细和准确，这样可以减少被装饰的对象数，提高性能，目录如果有多个，用“;”分隔。扫描目录如果含有“;”，可能会在某些操作系统中无法被识别，请用`""`进行引入，例如，-Dthread.scan.packages="com.abc;com.xyz"
 - `-D`thread.gateway.enabled：Spring Cloud Gateway端策略Header输出到异步子线程。默认开启
 - `-D`thread.zuul.enabled：Zuul端策略Header输出到异步子线程。默认开启
 - `-D`thread.service.enabled：服务端策略Header输出到异步子线程。默认开启
 - `-D`thread.mdc.enabled：SLF4J MDC日志输出到异步子线程。默认开启
 - `-D`thread.request.decorator.enabled：异步调用场景下在服务端的Request请求的装饰，当主线程先于子线程执行完的时候，Request会被Destory，导致Header仍旧拿不到，开启装饰，就可以确保拿到。默认为开启，根据实践经验，大多数场景下，需要开启该开关
 
-![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 提醒：对于扫描目录，请务必根据实际场景做配置，例如，不存在WebFlux Reactor的异步场景，就不必把reactor.core.publisher配置到扫描目录中
+基准扫描目录配置文件agent.config，默认配置如下。使用者可以增加和删除agent.config的基准扫描目录
+```
+# Base thread scan packages
+agent.plugin.thread.scan.packages=reactor.core.publisher;org.springframework.aop.interceptor;com.netflix.hystrix
+```
+
+当扫描目录下没有Runnable/Callable/Thread/ThreadPool等异步类存在，那么thread.scan.packages也不需要配置，最终启动命令行简化为
+```
+-javaagent:C:/opt/discovery-agent/discovery-agent-starter-${discovery.agent.version}.jar
+``
+
+参数说明
+- WebFlux Reactor异步场景下的扫描目录对应为reactor.core.publisher，可以解决基于Reactor的Spring Cloud LoadBalancer异步负载均衡下的上下文传递
+- `@`Async场景下的扫描目录对应为org.springframework.aop.interceptor
+- Hystrix线程池隔离场景下的扫描目录对应为com.netflix.hystrix
 
 #### 异步跨线程DiscoveryAgent扩展
 - 根据规范开发一个插件，插件提供了钩子函数，在某个类被加载的时候，可以注册一个事件到线程上下文切换事件当中，实现业务自定义ThreadLocal的跨线程传递
@@ -4549,7 +4558,7 @@ spring.boot.admin.client.url=http://localhost:9728
 ④ 异步跨线程Agent配置
 
 ```
--javaagent:C:/opt/discovery-agent/discovery-agent-starter-${discovery.agent.version}.jar -Dthread.scan.packages=reactor.core.publisher;org.springframework.aop.interceptor;com.netflix.hystrix;com.nepxion.discovery.guide.service.feign
+-javaagent:C:/opt/discovery-agent/discovery-agent-starter-${discovery.agent.version}.jar -Dthread.scan.packages=com.nepxion.discovery.guide.service.feign
 ```
 
 ### 功能开关配置
