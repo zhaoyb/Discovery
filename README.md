@@ -530,6 +530,7 @@ Discovery【探索】微服务框架，基于Spring Cloud & Spring Cloud Alibaba
     - [网关动态路由接入](#网关动态路由接入)
     - [Spring-Cloud-Gateway网关动态路由](#Spring-Cloud-Gateway网关动态路由)
     - [Zuul网关动态路由](#Zuul网关动态路由)
+- [统一配置订阅执行器](#统一配置订阅执行器)
 - [规则策略定义](#规则策略定义)
     - [规则策略格式定义](#规则策略格式定义)
     - [规则策略内容定义](#规则策略内容定义)
@@ -3267,6 +3268,56 @@ public class MySubscriber {
     @Subscribe
     public void onZuulStrategyRouteUpdatedAll(ZuulStrategyRouteUpdatedAllEvent zuulStrategyRouteUpdatedAllEvent) {
         System.out.println("更新全部网关路由=" + zuulStrategyRouteUpdatedAllEvent.getZuulStrategyRouteEntityList());
+    }
+}
+```
+
+## 统一配置订阅执行器
+
+统一配置订阅执行器，基于Nacos、Apollo、Consul、Etcd、Redis、Zookeeper六种配置中心，通过封装适配成同样的写法，通过切换继承类，可切换配置中心，无须修改其它代码
+
+Spring Cloud配置动态刷新机制固化在一个比较单一的场景（例如，通过@Value方式）里，无法满足更灵活更高级的订阅场景，例如，Spring Cloud Gateway和Zuul网关通过改变配置中心的路由信息无法动态刷新路由路径
+
+本框架提供更简单灵活的实现方式，以Nacos为例子，使用者先确定订阅的Group和DataId，在Nacos界面填入这两个参数对应的配置内容，然后通过回调方法处理业务逻辑。具体使用方式，如下
+```java
+// 把继承类（extends）换成如下任何一个，即可切换配置中心，代码无需任何变动
+// 1. NacosProcessor
+// 2. ApolloProcessor
+// 3. ConsulProcessor
+// 4. EtcdProcessor
+// 5. ZookeeperProcessor
+// 6. RedisProcessor
+// Group和DataId自行决定，需要注意
+// 1. 对于Nacos配置中心，Group和DataId需要和界面相对应
+// 2. 对于其它配置中心，Key的格式为Group-DataId
+// 3. 千万不能和蓝绿灰度发布的Group和DataId冲突
+public class MyGatewayStrategyRouteProcessor extends NacosProcessor {
+    // private String group = "DEFAULT_GROUP";
+    private String group = "nepxion";
+
+    @Value("${" + DiscoveryConstant.SPRING_APPLICATION_NAME + "}")
+    private String dataId;
+
+    @Override
+    public String getGroup() {
+        return group;
+    }
+
+    @Override
+    public String getDataId() {
+        return dataId;
+    }
+
+    @Override
+    public String getDescription() {
+        // description为日志打印显示而设置，作用是帮助使用者在日志上定位订阅是否在执行。例如，下行的返回值表示为网关动态路由的订阅
+        return "Gateway dynamic route";
+    }
+
+    @Override
+    public void callbackConfig(String config) {
+        // config为配置中心对应键值的内容变更，使用者可以根据此变更对业务模块做回调处理
+        System.out.println(config);
     }
 }
 ```
