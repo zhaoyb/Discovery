@@ -3023,25 +3023,18 @@ spring.application.parameter.event.onstart.enabled=true
 ## 网关动态路由
 网关动态路由功能，主要包括
 
-① 路由动态添加
-
-② 路由动态修改
-
-③ 路由动态删除
-
-④ 路由动态批量更新
-
-⑤ 路由查询
-
-⑥ 路由动态变更后，通过事件总线方式发出事件通知
+- 路由动态添加
+- 路由动态修改
+- 路由动态删除
+- 路由动态批量更新
+- 路由查询
+- 路由动态变更后，通过事件总线方式发出事件通知
 
 上述操作，可以通过
 
-① 网关暴露Rest Endpoint接口实施
-
-② 控制台暴露Rest Endpoint接口，对同一个网关下若干个实例批量实施
-
-③ 网关订阅配置中心（包括Nacos、Apollo、Consul、Etcd、Redis、Zookeeper）批量实施
+- 网关暴露Rest Endpoint接口实施
+- 控制台暴露Rest Endpoint接口，对同一个网关下若干个实例批量实施
+- 网关订阅配置中心（包括Nacos、Apollo、Consul、Etcd、Redis、Zookeeper）批量实施
 
 ### 网关动态路由接入
 如果使用者希望通过网关订阅配置中心方式，则需要加网关接入平台插件
