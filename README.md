@@ -3045,8 +3045,8 @@ spring.application.parameter.event.onstart.enabled=true
 
 ### 网关动态路由接入
 如果使用者希望通过网关订阅配置中心方式，则需要加网关接入平台插件
+
 ```xml
-<!-- 5.网关接入平台插件 -->
 <dependency>
     <groupId>com.nepxion</groupId>
     <artifactId>discovery-platform-starter-client</artifactId>
@@ -3060,6 +3060,7 @@ spring.application.parameter.event.onstart.enabled=true
 ① Spring Cloud Gateway网关的动态路由配置格式
 
 - 精简配置
+
 ```
 [
     {
@@ -3076,6 +3077,7 @@ spring.application.parameter.event.onstart.enabled=true
 ```
 
 - 完整配置
+
 ```
 [
     {
@@ -3121,6 +3123,7 @@ spring.application.parameter.event.onstart.enabled=true
 - Value为多个动态路由配置
 
 ⑤ 事件总线通知的订阅
+
 ```java
 @EventBus
 public class MySubscriber {
@@ -3152,6 +3155,7 @@ public class MySubscriber {
 ① Zuul网关的动态路由配置格式
 
 - 精简配置
+
 ```
 [
     {
@@ -3173,6 +3177,7 @@ public class MySubscriber {
 ```
 
 如果希望一个服务只映射一个动态路由路径，则不需要id，可以简化为
+
 ```
 [
     {
@@ -3183,6 +3188,7 @@ public class MySubscriber {
 ```
 
 - 完整配置
+
 ```
 [
     {
@@ -3246,6 +3252,7 @@ public class MySubscriber {
 - Value为多个动态路由配置
 
 ⑤ 事件总线通知的订阅
+
 ```java
 @EventBus
 public class MySubscriber {
