@@ -3121,7 +3121,7 @@ spring.application.parameter.event.onstart.enabled=true
     - {group}为蓝绿灰度的组名，即注册中心元数据group值
 - Value参考`① Spring Cloud Gateway网关的动态路由配置格式`
 
-![](http://nepxion.gitee.io/discovery/docs/discovery-doc/DiscoveryGuide7-10.jpg)
+![](http://nepxion.gitee.io/discovery/docs/discovery-doc/DiscoveryGuide7-9.jpg)
 
 支持如下开关开启该动能，默认是关闭的
 ```
