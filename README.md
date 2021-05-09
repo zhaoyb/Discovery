@@ -3116,8 +3116,8 @@ spring.application.parameter.event.onstart.enabled=true
 网关订阅配置中心的使用方式，如下
 
 - Key为
-    - Nacos配置中心，Group为${group}，DataId为${网关serviceId}-dynamic-route
-    - 其它配置中心，Key的格式为${group}-${网关serviceId}-dynamic-route
+    - Nacos配置中心，Group为{group}，DataId为{网关serviceId}-dynamic-route
+    - 其它配置中心，Key的格式为{group}-{网关serviceId}-dynamic-route
     - {group}为蓝绿灰度的组名，即注册中心元数据group值
 - Value参考`① Spring Cloud Gateway网关的动态路由配置格式`
 
@@ -3264,8 +3264,8 @@ public class MySubscriber {
 网关订阅配置中心的使用方式，如下
 
 - Key为
-    - Nacos配置中心，Group为${group}，DataId为${网关serviceId}-dynamic-route
-    - 其它配置中心，Key的格式为${group}-${网关serviceId}-dynamic-route
+    - Nacos配置中心，Group为{group}，DataId为{网关serviceId}-dynamic-route
+    - 其它配置中心，Key的格式为{group}-{网关serviceId}-dynamic-route
     - {group}为蓝绿灰度的组名，即注册中心元数据group值
 - Value参考`① Zuul网关的动态路由配置格式`
 
