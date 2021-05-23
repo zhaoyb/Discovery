@@ -21,11 +21,30 @@
 - Spring Cloud Alibaba、Nacos、Sentinel、OpenTracing Committer & Contributor
 
 ![](http://nepxion.gitee.io/discovery/docs/icon-doc/star2.png) 商业化合作
-- DiscoveryX（7.0.0版，支持Spring Cloud 202x版）源码，价格6888元
-- Polaris（Discovery高级版，支持Finchley版、Greenwich版、Hoxton版和Spring Cloud 202x版）源码，价格6888元
-- 添加微信1394997，通过如下微信支付相关商业费用
 
-![](http://nepxion.gitee.io/discovery/docs/zxing-doc/微信支付.jpg)
+① Discovery系列
+
+| 框架名称 | 框架版本 | 支持Spring Cloud版本 | 使用许可 |
+| --- | --- | --- | --- |
+| Discovery | 1.x.x ~ 6.x.x | Camden ~ Hoxton | 开源，永久免费 |
+| DiscoveryX | 7.x.x | 202x | 闭源，商业许可 |
+
+② Polaris系列
+
+Polaris为Discovery高级定制版，特色功能
+- 基于Nepxion Discovery集成定制
+- 多云、多活、多机房流量调配
+- 跨云动态域名、跨环境适配
+- DCN、DSU、SET单元化部署
+- 组件灵活装配、配置对外屏蔽
+- 极简低代码PaaS平台
+
+| 框架名称 | 框架版本 | 支持Discovery版本 | 支持Spring Cloud版本 | 使用许可 |
+| --- | --- | --- | --- | --- |
+| Polaris | 1.x.x | 6.x.x | Finchley ~ Hoxton | 闭源，商业许可 |
+| Polaris | 2.x.x | 7.x.x | 202x | 闭源，商业许可 |
+
+![](http://nepxion.gitee.io/discovery/docs/icon-doc/tip.png) 有商业版需求的企业和用户，请添加微信1394997，联系作者，洽谈合作事宜
 
 ![](http://nepxion.gitee.io/discovery/docs/discovery-doc/Logo64.png) Discovery【探索】微服务企业级解决方案
 
