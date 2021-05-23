@@ -32,6 +32,7 @@
 ② Polaris系列
 
 Polaris为Discovery高级定制版，特色功能
+
 - 基于Nepxion Discovery集成定制
 - 多云、多活、多机房流量调配
 - 跨云动态域名、跨环境适配
@@ -44,7 +45,7 @@ Polaris为Discovery高级定制版，特色功能
 | Polaris | 1.x.x | 6.x.x | Finchley ~ Hoxton | 闭源，商业许可 |
 | Polaris | 2.x.x | 7.x.x | 202x | 闭源，商业许可 |
 
-![](http://nepxion.gitee.io/discovery/docs/icon-doc/tip.png) 有商业版需求的企业和用户，请添加微信1394997，联系作者，洽谈合作事宜
+有商业版需求的企业和用户，请添加微信1394997，联系作者，洽谈合作事宜
 
 ![](http://nepxion.gitee.io/discovery/docs/discovery-doc/Logo64.png) Discovery【探索】微服务企业级解决方案
 
