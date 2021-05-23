@@ -730,7 +730,7 @@ Discovery【探索】微服务框架，基于Spring Cloud & Spring Cloud Alibaba
 | &nbsp;&nbsp;<img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> discovery-plugin-strategy-starter-sentinel-opentracing | 策略的Sentinel OpenTracing调用链的Starter |
 | &nbsp;&nbsp;<img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> discovery-plugin-strategy-starter-sentinel-skywalking | 策略的Sentinel SkyWalking调用链的Starter |
 | <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_south.png"> discovery-plugin-test | 测试模块目录 |
-| &nbsp;&nbsp;<img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> discovery-plugin-test-starter | 自动化测试的Starter |
+| &nbsp;&nbsp;<img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> discovery-plugin-test-starter-automation| 自动化测试的Starter |
 | <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_south.png"> discovery-console | 控制平台目录 |
 | &nbsp;&nbsp;<img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> discovery-console-starter | 控制平台的starter |
 | &nbsp;&nbsp;<img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> discovery-console-starter-apollo | 控制平台的Apollo Starter |
