@@ -280,7 +280,7 @@ Discovery【探索】微服务框架，基于Spring Cloud & Spring Cloud Alibaba
 | DiscoveryContrib | [![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryContrib?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryContrib?category=lines) |
 
 ## 鸣谢
-![](http://nepxion.gitee.io/discovery/docs/icon-doc/star3.png) 郑重致谢
+![](http://nepxion.gitee.io/discovery/docs/icon-doc/star2.png) 郑重致谢
 - 感谢阿里巴巴中间件Nacos、Sentinel和Spring Cloud Alibaba团队，尤其是Nacos负责人@彦林、@于怀，Sentinel负责人@宿何、@子衿，Spring Cloud Alibaba负责人@良名、@小马哥、@洛夜、@亦盏的技术支持
 - 感谢携程Apollo团队，尤其是@宋顺的技术支持
 - 感谢所有Committers和Contributors
