@@ -562,7 +562,6 @@ Discovery【探索】微服务框架，基于Spring Cloud & Spring Cloud Alibaba
     - [异步场景下Hystrix线程池隔离解决方案](#异步场景下Hystrix线程池隔离解决方案)
 - [全链路数据库和消息队列蓝绿发布](#全链路数据库和消息队列蓝绿发布)
 - [网关动态路由](#网关动态路由)
-    - [网关动态路由接入](#网关动态路由接入)
     - [Spring-Cloud-Gateway网关动态路由](#Spring-Cloud-Gateway网关动态路由)
     - [Zuul网关动态路由](#Zuul网关动态路由)
 - [统一配置订阅执行器](#统一配置订阅执行器)
@@ -2565,8 +2564,8 @@ curl -X PUT 'http://ip:port/eureka/apps/{appId}/{instanceId}/metadata?version=st
 
 | 操作 | 路径 | 内容 | 方式 |
 | --- | --- | --- | --- |
-| 网关为入口 | `http://`[网关IP:PORT]/[A服务名]/inspector/inspect | {"serviceIdList":["B服务名", "C服务名", ....]} | POST |
-| 服务为入口 | `http://`[A服务IP:PORT]/inspector/inspect | {"serviceIdList":["B服务名", "C服务名", ....]} | POST |
+| 网关为入口 | `http://`[网关IP:PORT]/[A服务名]/inspector/inspect | {"serviceIdList":["B服务名", "C服务名", ...]} | POST |
+| 服务为入口 | `http://`[A服务IP:PORT]/inspector/inspect | {"serviceIdList":["B服务名", "C服务名", ...]} | POST |
 
 ![](http://nepxion.gitee.io/discovery/docs/icon-doc/tip.png) 提醒：内容项中服务名列表不分前后次序
 
