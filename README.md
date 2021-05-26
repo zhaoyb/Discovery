@@ -3895,7 +3895,6 @@ Reject to invoke because of isolation with different service group
 集成Sentinel熔断隔离限流降级平台
 
 ![](http://nepxion.gitee.io/discovery/docs/discovery-doc/Sentinel3.jpg)
-![](http://nepxion.gitee.io/discovery/docs/discovery-doc/Sentinel4.jpg)
 
 通过集成Sentinel，在服务端实现该功能
 
@@ -4300,7 +4299,6 @@ ruleType为哨兵规则类型。取值： flow | degrade | authority | system | 
 - 集成OpenTracing + Jaeger蓝绿灰度全链路监控
 
 ![](http://nepxion.gitee.io/discovery/docs/discovery-doc/Jaeger2.jpg)
-![](http://nepxion.gitee.io/discovery/docs/discovery-doc/Jaeger3.jpg)
 ![](http://nepxion.gitee.io/discovery/docs/discovery-doc/JaegerPremium1.jpg)
 
 - 集成OpenTracing + SkyWalking蓝绿灰度全链路监控
