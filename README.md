@@ -3117,9 +3117,64 @@ spring.application.parameter.event.onstart.enabled=true
         "filters": [
             "StripPrefix=1"
         ], 
-        // 用户自定义断言器
+        "order": 0,
+        "metadata": {}
+    }
+]
+```
+
+- 用户自定义断言器和过滤器的配置
+
+自定义方式描述网关内置断言器和过滤器
+
+![](http://nepxion.gitee.io/discovery/docs/icon-doc/tip.png) 提醒：网关内置断言器和过滤器的args名称必须是`_genkey_序号`格式。例如，"_genkey_0": "/discovery-guide-service-a/**"
+
+```
+[
+    {
+        "id": "route0", 
+        "uri": "lb://discovery-guide-service-a",
+        "userPredicates": [
+            {
+                "name": "Path",
+                "args": {
+                    "_genkey_0": "/discovery-guide-service-a/**",
+                    "_genkey_1": "/x/**",
+                    "_genkey_2": "/y/**"
+                }
+            }
+        ],
+        "userFilters": [
+            {
+                "name": "StripPrefix",
+                "args": {
+                    "_genkey_0": "1"
+                }
+            }
+        ]
+    }
+]
+```
+
+自定义方式描述用户扩展的断言器和过滤器
+
+![](http://nepxion.gitee.io/discovery/docs/icon-doc/tip.png) 提醒：用户扩展的断言器和过滤器Key必须遵循如下规则
+
+- List<String>结构，args名称必须是`list的变量名.序号`格式。例如，"whiteList.0": "* swagger-ui.html"
+- Map<String, String>结构，args名称必须是`map的变量名.map的key`格式。例如，"userMap.name": "jason"
+
+```
+[
+    {
+        "id": "route0", 
+        "uri": "lb://discovery-guide-service-a", 
+        "predicates": [
+            "Path=/discovery-guide-service-a/**,/x/**,/y/**"
+        ], 
+        "filters": [
+            "StripPrefix=1"
+        ], 
         "userPredicates": [],
-        // 用户自定义过滤器
         "userFilters": [
             {
                 "name": "CheckAuthentication",
@@ -3128,12 +3183,12 @@ spring.application.parameter.event.onstart.enabled=true
                     "whiteList.0": "* swagger-ui.html",
                     "whiteList.1": "* /swagger-resources/**",
                     "whiteList.2": "* /doc.html",
+                    "userMap.name": "jason",
+                    "userMap.age": "20",
                     "authInfoCarryStrategy": "AuthWriteToHeader"
                 }
             }
-        ], 
-        "order": 0,
-        "metadata": {}
+        ]
     }
 ]
 ```
