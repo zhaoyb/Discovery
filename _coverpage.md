@@ -3,12 +3,13 @@
 # Nepxion Discovery <small>6.10.0</small>
 
 > 专注于企业级云原生微服务开源解决方案
-- 集成阿里巴巴中间件、Spring Cloud Alibaba等技术栈
-- 蓝绿灰度发布、流量染色、编排建模、异步Agent
+- 集成阿里巴巴中间件Nacos、Sentinel、Spring Cloud Alibaba、Apollo、SkyWalking等技术栈
+- 蓝绿灰度发布、权重路由、流量染色、无损下线、编排建模、异步Agent
+- 网关动态实时路由、内置和自定义断言器和过滤器
 - 发布故障转移和偏好、服务实例实时无损摘除
-- 环境和区域隔离路由、服务隔离准入
+- 环境和可用区隔离路由、服务隔离准入
 - 流量追踪侦测、埋点日志指标监控
-- 限流熔断降级授权
+- 限流熔断降级授权、防护扩展
 
 [GitHub](https://github.com/Nepxion/Discovery/)
 [Get Started](#Discovery【探索】微服务企业级解决方案)
