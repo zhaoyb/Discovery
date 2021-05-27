@@ -3,7 +3,7 @@
 # Nepxion Discovery <small>6.10.0</small>
 
 > 专注于企业级云原生微服务开源解决方案
-- 集成阿里巴巴中间件、Spring Cloud Alibaba等技术栈
+- 集成阿里巴巴中间件、Spring Cloud Alibaba、Spring Cloud等技术栈
 - 蓝绿灰度发布路由、流量染色、编排建模、异步Agent
 - 网关实时动态路由、内置和自定义断言器和过滤器
 - 发布故障转移和偏好、服务实例实时无损摘除
