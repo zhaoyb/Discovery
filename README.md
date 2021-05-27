@@ -5764,30 +5764,11 @@ gray.weight.testcase.result.offset=5
 
 #### 测试包引入
 ```xml
-<dependencies>
-    <dependency>
-        <groupId>com.nepxion</groupId>
-        <artifactId>discovery-plugin-test-starter</artifactId>
-        <version>${discovery.version}</version>
-    </dependency>
-</dependencies>
-
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <configuration>
-                <compilerArgs>
-                    <arg>-parameters</arg>
-                </compilerArgs>
-                <encoding>${project.build.sourceEncoding}</encoding>
-                <source>${java.version}</source>
-                <target>${java.version}</target>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+<dependency>
+    <groupId>com.nepxion</groupId>
+    <artifactId>discovery-plugin-test-starter</artifactId>
+    <version>${discovery.version}</version>
+</dependency>
 ```
 
 ![](http://nepxion.gitee.io/discovery/docs/icon-doc/warning.png) 需要注意，对于带有注解@DTestConfig的测试用例，要用到Spring的Spel语法格式（即group = "#group", serviceId = "#serviceId"），需要引入Java8的带"-parameters"编译方式，见上面的<compilerArgs>参数设置
@@ -5999,7 +5980,7 @@ public class PolarisTestCases {
 ```
 
 ### 测试报告
-
+测试报告样例
 ```
 ---------- Run automation testcase :: testEnabledStrategyGray1() ----------
 Header : [mobile:"138"]
