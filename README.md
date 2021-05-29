@@ -563,10 +563,10 @@ Discovery【探索】微服务框架，基于Spring Cloud & Spring Cloud Alibaba
 - [网关动态路由](#网关动态路由)
     - [Spring-Cloud-Gateway网关动态路由](#Spring-Cloud-Gateway网关动态路由)
         - [Spring-Cloud-Gateway网关动态路由配置](#Spring-Cloud-Gateway网关动态路由配置)
-        - [Spring-Cloud-Gateway网关自定义断言器和过滤器配置](#Spring-Cloud-Gateway网关自定义断言器和过滤器配置)
+        - [Spring-Cloud-Gateway网关自定义动态路由配置](#Spring-Cloud-Gateway网关自定义动态路由配置)
         - [Spring-Cloud-Gateway网关Rest-Endpoint](#Spring-Cloud-Gateway网关Rest-Endpoint)
         - [Spring-Cloud-Gateway网关订阅配置中心](#Spring-Cloud-Gateway网关订阅配置中心)
-        - [Spring-Cloud-Gateway网关事件总线通知的订阅](#Spring-Cloud-Gateway网关事件总线通知的订阅)	
+        - [Spring-Cloud-Gateway网关事件总线通知的订阅](#Spring-Cloud-Gateway网关事件总线通知的订阅)
     - [Zuul网关动态路由](#Zuul网关动态路由)
         - [Zuul网关动态路由配置](#Zuul网关动态路由配置)
         - [Zuul网关Rest-Endpoint](#Zuul网关Rest-Endpoint)
@@ -3123,7 +3123,7 @@ spring.application.parameter.event.onstart.enabled=true
 ]
 ```
 
-#### Spring-Cloud-Gateway网关自定义断言器和过滤器配置
+#### Spring-Cloud-Gateway网关自定义动态路由配置
 ① 自定义方式描述网关内置断言器和过滤器
 
 ![](http://nepxion.gitee.io/discovery/docs/icon-doc/tip.png) 提醒：网关内置断言器和过滤器的args名称必须是`_genkey_序号`格式。例如，"_genkey_0": "/discovery-guide-service-a/**"
@@ -3234,7 +3234,7 @@ Authentication={"secretKey":"abc", "whiteList.0":"* swagger-ui.html", "whiteList
     - Nacos、Redis、Zookeeper配置中心，Group为{group}，DataId为{网关serviceId}-dynamic-route
     - Apollo、Consul、Etcd配置中心，Key的格式为{group}-{网关serviceId}-dynamic-route
     - {group}为注册中心元数据group值
-- Value参考“① Spring Cloud Gateway网关的动态路由配置格式”
+- Value参考[Spring-Cloud-Gateway网关动态路由配置](#Spring-Cloud-Gateway网关动态路由配置)
 
 ![](http://nepxion.gitee.io/discovery/docs/discovery-doc/DiscoveryGuide7-9.jpg)
 
@@ -3383,7 +3383,7 @@ public class MySubscriber {
     - Nacos、Redis、Zookeeper配置中心，Group为{group}，DataId为{网关serviceId}-dynamic-route
     - Apollo、Consul、Etcd配置中心，Key的格式为{group}-{网关serviceId}-dynamic-route
     - {group}为注册中心元数据group值
-- Value参考“① Zuul网关的动态路由配置格式”
+- Value参考[Zuul网关动态路由配置](#Zuul网关动态路由配置)
 
 ![](http://nepxion.gitee.io/discovery/docs/discovery-doc/DiscoveryGuide7-10.jpg)
 
