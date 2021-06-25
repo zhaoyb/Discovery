@@ -7,6 +7,8 @@
 
 [![Discovery DOC PPT](https://img.shields.io/badge/Discovery%20Doc-PPT-brightgreen?logo=Microsoft%20PowerPoint)](http://nepxion.gitee.io/discovery/docs/link-doc/discovery-ppt.html)  [![Discovery DOC PDF](https://img.shields.io/badge/Discovery%20Doc-PDF-brightgreen?logo=Adobe%20Acrobat%20Reader)](http://nepxion.gitee.io/discovery/docs/link-doc/discovery-pdf.html)  [![Discovery DOC HTML](https://img.shields.io/badge/Discovery%20Doc-HTML-brightgreen?logo=Microsoft%20Edge)](http://nepxion.gitee.io/discovery/docs/link-doc/discovery-html.html)
 
+[![](http://nepxion.gitee.io/discovery/docs/icon-doc/github.png)](https://github.com/Nepxion)  [![](http://nepxion.gitee.io/discovery/docs/icon-doc/gitee.png)](https://gitee.com/Nepxion)  [![](http://nepxion.gitee.io/discovery/docs/icon-doc/maven.png)](https://search.maven.org/search?q=g:com.nepxion)  [![](http://nepxion.gitee.io/discovery/docs/icon-doc/wechat.png)](http://nepxion.gitee.io/discovery/docs/zxing-doc/%E5%BE%AE%E4%BF%A1.jpg)  [![](http://nepxion.gitee.io/discovery/docs/icon-doc/dingding.png)](http://nepxion.gitee.io/discovery/docs/zxing-doc/%E9%92%89%E9%92%89.jpg)  [![](http://nepxion.gitee.io/discovery/docs/icon-doc/gongzhonghao.png)](http://nepxion.gitee.io/discovery/docs/zxing-doc/%E5%85%AC%E4%BC%97%E5%8F%B7.jpg)  [![](http://nepxion.gitee.io/discovery/docs/icon-doc/email.png)](mailto:1394997@qq.com)
+
 如果您觉得本框架具有一定的参考价值和借鉴意义，请帮忙在页面右上角 [**Star**]
 
 ![](http://nepxion.gitee.io/discovery/docs/icon-doc/star1.png) 首席作者简介
