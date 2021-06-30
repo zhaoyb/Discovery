@@ -1380,9 +1380,9 @@ H的含义：H为Http首字母，即取值Http类型的参数，包括Header、P
 <?xml version="1.0" encoding="UTF-8"?>
 <rule>
     <!-- 全局缺省路由，当兜底路由存在的时候，全局缺省路由不需要配置 -->
-    <strategy>
+    <!-- <strategy>
         <version>{"discovery-guide-service-a":"1.0", "discovery-guide-service-b":"1.0"}</version>
-    </strategy>
+    </strategy> -->
 
     <strategy-release>
         <conditions type="blue-green">
@@ -1576,9 +1576,9 @@ n-d-region-weight={"discovery-guide-service-a":"dev=85;qa=15", "discovery-guide-
 <rule>
     <!-- 全局缺省路由，当兜底路由存在的时候，全局缺省路由不需要配置 -->
     <!-- 兜底路由如果把全局缺省路由的流量配比设置成100%，其它流量配比设置成0%，那么它等同于如下全局缺省路由 -->
-    <strategy>
+    <!-- <strategy>
         <version>{"discovery-guide-service-a":"1.0", "discovery-guide-service-b":"1.0"}</version>
-    </strategy>
+    </strategy> -->
 
     <strategy-release>
         <conditions type="gray">
@@ -1719,6 +1719,63 @@ spring.application.strategy.zuul.original.header.ignored=true
         </routes>
     </strategy-release>
 </rule>
+```
+
+混合蓝绿灰度发布的逻辑
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<rule>
+    <strategy-release>
+        <conditions type="blue-green">
+            <condition id="condition-0" expression="#H['a'] == '0'" version-id="route-0"/>
+            <condition id="condition-1" expression="#H['a'] == '1'" version-id="route-1"/>
+            <condition id="basic-condition" version-id="basic-route"/> <!-- 可以删除掉蓝绿发布的兜底策略 -->
+        </conditions>
+
+        <conditions type="gray">
+            <condition id="condition-0" expression="#H['a'] == '2'" version-id="route-0=10;route-1=90"/>
+            <condition id="condition-1" expression="#H['a'] == '3'" version-id="route-0=85;route-1=15"/>
+            <condition id="basic-condition" version-id="route-0=0;route-1=100"/>
+        </conditions>
+
+        <routes>
+            <route id="route-0" type="version">{"discovery-guide-service-a":"1.1", "discovery-guide-service-b":"1.1"}</route>
+            <route id="route-1" type="version">{"discovery-guide-service-a":"1.1", "discovery-guide-service-b":"1.1"}</route>
+            <route id="basic-route" type="version">{"discovery-guide-service-a":"1.0", "discovery-guide-service-b":"1.0"}</route>
+        </routes>
+    </strategy-release>
+</rule>
+```
+
+规则解读
+
+原则：蓝绿规则优先于灰度规则
+```java
+if (a == 0) {
+    执行蓝绿发布blue-green的route-0下的路由
+} else if (a == 1) {
+    执行蓝绿发布blue-green的route-1下的路由
+} else {
+    执行蓝绿发布blue-green的basic-route下的兜底路由
+}
+```
+![](http://nepxion.gitee.io/discovery/docs/icon-doc/tip.png) 提醒：当蓝绿发布存在兜底策略（`basic-condition`），灰度发布永远不会被执行
+
+如果删除掉蓝绿发布的兜底策略，那么执行逻辑则变为
+```java
+if (a == 0) {
+    执行蓝绿发布route-0下的路由
+} else if (a == 1) {
+    执行蓝绿发布route-1下的路由
+} else if (a == 2) {
+    执行灰度发布route-0=10;route-1=90下的流量百分比分配路由
+} else if (a == 3) {
+    执行灰度发布route-0=85;route-1=15下的流量百分比分配路由	
+} else {
+    执行灰度发布route-0=0;route-1=100下的兜底路由
+    由于赋予了route-0=0，那么流量会全部打到route-1上，相当于变种的蓝绿发布
+}
 ```
 
 ### 全链路域网关和非域网关部署
@@ -2780,6 +2837,18 @@ spring.application.strategy.version.prefer.enabled=true
 ```
 1. n-d-id-blacklist=20210601-222214-909-1146-372-698;20210601-222623-277-4978-633-279
 2. n-d-id-blacklist={"discovery-guide-service-a":"20210601-222214-909-1146-372-698", "discovery-guide-service-b":"20210601-222623-277-4978-633-279"}
+```
+
+![](http://nepxion.gitee.io/discovery/docs/icon-doc/tip.png) 小贴士
+
+利用通配符方式实现对指定日期上线的服务实例做屏蔽，示例内容如下，表示2021年6月1日（也可以精确到小时或者分钟）上线的a服务实例和b服务实例都会被屏蔽。该场景的使用意义是，在服务下线之前，使用者担心流量有损，同时使用者知道上一次服务发布的日期，只要该屏蔽策略一生效，负载均衡将实时过滤掉指定日期的服务实例。那么，使用者对这些服务实例无论是优雅停机，还是暴力下线，都不会造成任何流量有损，例如
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<rule>
+    <strategy-blacklist>
+        <id>{"discovery-guide-service-a":"20210601*", "discovery-guide-service-b":"20210601*"}</id>
+    </strategy-blacklist>
+</rule>
 ```
 
 ### IP地址和端口屏蔽
@@ -4069,6 +4138,94 @@ Zookeeper订阅推送界面
 控制平台批量推送界面
 
 ![](http://nepxion.gitee.io/discovery/docs/discovery-doc/Swagger2.jpg)
+
+除了提供基本的Swagger功能之外，内置模块还对使用者提供扩展
+
+- 支持使用者自定义Swagger接口利用内置的SwaggerConfiguration来初始化，这样使用者可以不再需要定义自己的SwaggerConfiguratio。通过如下配置实现
+
+```
+swagger.service.scan.group=your-scan-group
+swagger.service.scan.packages=your-scan-packages
+```
+
+- 支持使用者自定义内置的基准Docket组名。通过如下配置实现
+
+```
+swagger.service.base.group=your-base-group
+```
+
+- 支持使用者覆盖内置的Swagger配置。通过如下配置实现
+
+```
+# 启动和关闭Swagger。缺失则默认为true
+swagger.service.enabled=true
+# Swagger基准Docket组名
+swagger.service.base.group=Nepxion Discovery
+# Swagger自定义Docket组名
+swagger.service.scan.group=Admin Center Restful APIs
+# Swagger自定义扫描目录
+swagger.service.scan.packages=your-scan-packages
+# Swagger描述
+swagger.service.description=your-description
+# Swagger版本
+swagger.service.version=6.11.0
+# Swagger License名称
+swagger.service.license.name=Apache License 2.0
+# Swagger License链接
+swagger.service.license.url=http://www.apache.org/licenses/LICENSE-2.0
+# Swagger联系人名称
+swagger.service.contact.name=Nepxion
+# Swagger联系人网址
+swagger.service.contact.url=https://github.com/Nepxion/Discovery
+# Swagger联系人邮件
+swagger.service.contact.email=1394997@qq.com
+# Swagger服务条件网址
+swagger.service.termsOfService.url=http://www.nepxion.com
+```
+
+- 支持基于Access Token Header的Swagger授权，包括全局授权和接口级授权。使用者通过如下方式进行扩展支持，可以选择其中一种，也可以两种并存。当两种并存的时候，全局授权优先于接口级授权
+
+```java
+@Configuration
+@ConditionalOnProperty(value = DiscoverySwaggerConstant.SWAGGER_SERVICE_ENABLED, matchIfMissing = true)
+public class SwaggerAutoConfiguration {
+    // Access Token Header全局授权
+    @Bean
+    public List<ApiKey> swaggerSecuritySchemes() {
+        return Collections.singletonList(new ApiKey(DiscoveryConstant.N_D_ACCESS_TOKEN, DiscoveryConstant.N_D_ACCESS_TOKEN, "header"));
+    }
+
+    @Bean
+    public List<SecurityContext> swaggerSecurityContexts() {
+        return Collections.singletonList(
+                SecurityContext
+                        .builder()
+                        .securityReferences(Collections.singletonList(new SecurityReference(DiscoveryConstant.N_D_ACCESS_TOKEN, scopes())))
+                        .forPaths(PathSelectors.any())
+                        .build());
+    }
+
+    private AuthorizationScope[] scopes() {
+        return new AuthorizationScope[] { new AuthorizationScope("global", "accessAnything") };
+    }
+
+    // Access Token Header接口级授权
+    @Bean
+    public List<Parameter> swaggerHeaderParameters() {
+        return Collections.singletonList(
+                new ParameterBuilder()
+                        .name(DiscoveryConstant.N_D_ACCESS_TOKEN)
+                        .description("Access Token。格式：" + DiscoveryConstant.BEARER + "空格${access-token}。当全局授权（Authorize）后，此处不必填写")
+                        .modelRef(new ModelRef("string"))
+                        .parameterType("header")
+                        .defaultValue(DiscoveryConstant.BEARER + " ${access-token}")
+                        .required(false)
+                        .build());
+    }
+}
+```
+
+把SwaggerAutoConfiguration加入到src/main/resources/META-INF/spring.factories进行自动装配
 
 ### 基于图形化桌面端和Web端的规则策略推送
 
