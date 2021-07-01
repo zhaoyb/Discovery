@@ -76,6 +76,9 @@ Polaris为Discovery高级定制版，特色功能
 - [Gitee Wiki](https://gitee.com/Nepxion/Discovery/wikis/pages)
 - [Github Wiki](https://github.com/Nepxion/Discovery/wiki)
 
+⑥ Discovery【探索】微服务企业级解决方案平台操作手册
+- [Discovery【探索】微服务企业级解决方案平台操作手册(WIKI版)](http://nepxion.com/discovery-platform)
+
 ![](http://nepxion.gitee.io/discovery/docs/polaris-doc/Logo64.png) Polaris【北极星】企业级云原生微服务框架
 
 ① Polaris【北极星】企业级云原生微服务框架文档
