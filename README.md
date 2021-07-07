@@ -969,7 +969,7 @@ Discovery【探索】微服务框架，基于Spring Cloud & Spring Cloud Alibaba
 为了更好的阐述框架的各项功能，本文围绕指南示例展开，请使用者先进行下面的准备工作。指南示例以Nacos为服务注册中心和配置中心展开介绍，使用者可自行换成其它服务注册中心和配置中心
 
 ### 环境搭建
-① 下载代码，Git clone [https://github.com/Nepxion/DiscoveryGuide.git](https://github.com/Nepxion/DiscoveryGuide.git)
+① 下载代码，Git clone [https://github.com/Nepxion/DiscoveryGuide.git](https://github.com/Nepxion/DiscoveryGuide.git)，分支为6.x.x-simple
 
 ② 代码导入IDE
 
@@ -983,7 +983,7 @@ Discovery【探索】微服务框架，基于Spring Cloud & Spring Cloud Alibaba
 - Linux环境下，运行bin目录下的startup.sh
 
 ### 启动服务 
-- 在IDE中，启动四个应用服务和两个网关服务，控制平台服务和监控平台服务可选，如下
+- 在IDE中，启动四个应用服务和两个网关服务，如下
 
 | 类名 | 微服务 | 服务端口 | 版本 | 区域 | 环境 | 可用区 |
 | --- | --- | --- | --- | --- | -- | -- | 
@@ -993,8 +993,6 @@ Discovery【探索】微服务框架，基于Spring Cloud & Spring Cloud Alibaba
 | DiscoveryGuideServiceB2.java | B2 | 4002 | 1.1 | dev | common | zone2 |
 | DiscoveryGuideGateway.java | Gateway | 5001 | 1.0 | 无 | 无 | 无 |
 | DiscoveryGuideZuul.java | Zuul | 5002 | 1.0 | 无 | 无 | 无 |
-| DiscoveryGuideConsole.java | Console | 6001 | 1.0 | 无 | 无 | 无 |
-| DiscoveryGuideAdmin.java | Admin | 6002 | 1.0 | 无 | 无 | 无 |
 
 - 部署拓扑图
 
