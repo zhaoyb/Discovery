@@ -816,14 +816,14 @@ Discovery【探索】微服务框架，基于Spring Cloud & Spring Cloud Alibaba
 
 ### 代码清单
 
-| 仓库 | 代码行数 |
+| 仓库主分支 | 代码行数 |
 | --- | --- |
-| <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> Discovery (Master Branch) | [![Total lines](https://tokei.rs/b1/github/Nepxion/Discovery?category=lines)](https://tokei.rs/b1/github/Nepxion/Discovery?category=lines) |
-| <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> DiscoveryPlatform (Master Branch) | [![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryPlatform?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryPlatform?category=lines) |
-| <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> DiscoveryGuide (Master Branch) | [![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryGuide?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryGuide?category=lines) |
-| <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> DiscoveryAgent (Master Branch) | [![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryAgent?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryAgent?category=lines) |
-| <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> DiscoveryUI (Master Branch) | [![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryUI?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryUI?category=lines) |
-| <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> DiscoveryContrib (Master Branch) | [![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryContrib?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryContrib?category=lines) |
+| <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> Discovery | [![Total lines](https://tokei.rs/b1/github/Nepxion/Discovery?category=lines)](https://tokei.rs/b1/github/Nepxion/Discovery?category=lines) |
+| <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> DiscoveryPlatform | [![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryPlatform?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryPlatform?category=lines) |
+| <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> DiscoveryGuide | [![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryGuide?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryGuide?category=lines) |
+| <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> DiscoveryAgent | [![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryAgent?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryAgent?category=lines) |
+| <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> DiscoveryUI | [![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryUI?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryUI?category=lines) |
+| <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> DiscoveryContrib | [![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryContrib?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryContrib?category=lines) |
 
 ### 架构核心
 - 服务治理架构图
