@@ -55,36 +55,28 @@ Polaris为Discovery高级定制版，特色功能
 ① Discovery【探索】微服务企业级解决方案文档
 - [Discovery【探索】微服务企业级解决方案(WIKI版)](http://nepxion.com/discovery)
 - [Discovery【探索】微服务企业级解决方案(PPT版)](http://nepxion.gitee.io/discovery/docs/link-doc/discovery-ppt.html)
-- [Discovery【探索】微服务企业级解决方案(PDF版)](http://nepxion.gitee.io/discovery/docs/link-doc/discovery-pdf.html)
-- [Discovery【探索】微服务企业级解决方案(HTML版)](http://nepxion.gitee.io/discovery/docs/link-doc/discovery-html.html)
+- [Discovery【探索】微服务企业级解决方案平台界面(WIKI版)](http://nepxion.com/discovery-platform)
+- [Discovery【探索】微服务企业级解决方案快速入门(Github版)](https://github.com/Nepxion/Discovery/wiki)
+- [Discovery【探索】微服务企业级解决方案快速入门(Gitee版)](https://gitee.com/Nepxion/Discovery/wikis/pages)
 
-② Discovery【探索】微服务企业级解决方案平台操作手册
-- [Discovery【探索】微服务企业级解决方案平台操作手册](http://nepxion.com/discovery-platform)
-
-③ Discovery【探索】微服务企业级解决方案源码。请访问Gitee镜像获得最佳体验
+② Discovery【探索】微服务企业级解决方案源码。请访问Gitee镜像获得最佳体验
 - [源码Gitee同步镜像](https://gitee.com/Nepxion/Discovery)
 - [源码Github原镜像](https://github.com/Nepxion/Discovery)
 
-④ Discovery【探索】微服务企业级解决方案指南示例源码。请访问Gitee镜像获得最佳体验
+③ Discovery【探索】微服务企业级解决方案指南示例源码。请访问Gitee镜像获得最佳体验
 - [指南Gitee同步镜像](https://gitee.com/Nepxion/DiscoveryGuide)
 - [指南Github原镜像](https://github.com/Nepxion/DiscoveryGuide)
 
-⑤ Discovery【探索】微服务企业级解决方案指南示例说明
+④ Discovery【探索】微服务企业级解决方案指南示例说明
 - 对于入门级玩家，参考[6.x.x指南示例极简版](https://github.com/Nepxion/DiscoveryGuide/tree/6.x.x-simple)，分支为6.x.x-simple
 - 对于熟练级玩家，参考[6.x.x指南示例精进版](https://github.com/Nepxion/DiscoveryGuide/tree/6.x.x)，分支为6.x.x。除上述《极简版》功能外，涉及到指南篇里的绝大多数高级功能
 - 对于骨灰级玩家，参考[6.x.x指南示例高级版](https://github.com/Nepxion/DiscoveryGuide/tree/6.x.x-complex)，分支为6.x.x-complex。除上述《精进版》功能外，涉及到指南篇里的ActiveMQ、MongoDB、RabbitMQ、Redis、RocketMQ、MySQL等高级调用链和蓝绿灰度调用链的整合
 - 上述指南实例分支是针对Spring Cloud旧版本。对于Spring Cloud 202x版本，参考[202x版指南示例精进版](https://github.com/Nepxion/DiscoveryGuide/tree/master)，分支为master
 
-⑥ Discovery【探索】微服务企业级解决方案快速入门文档
-- [Gitee Wiki](https://gitee.com/Nepxion/Discovery/wikis/pages)
-- [Github Wiki](https://github.com/Nepxion/Discovery/wiki)
-
 ![](http://nepxion.gitee.io/discovery/docs/polaris-doc/Logo64.png) Polaris【北极星】企业级云原生微服务框架
 
 ① Polaris【北极星】企业级云原生微服务框架文档
 - [Polaris【北极星】企业级云原生微服务框架(WIKI版)](http://nepxion.com/polaris)
-- [Polaris【北极星】企业级云原生微服务框架(PDF版)](http://nepxion.gitee.io/discovery/docs/link-doc/polaris-pdf.html)
-- [Polaris【北极星】企业级云原生微服务框架(HTML版)](http://nepxion.gitee.io/discovery/docs/link-doc/polaris-html.html)
 
 ② Polaris【北极星】企业级云原生微服务框架源码。请访问Gitee镜像获得最佳体验
 - [源码Gitee同步镜像](https://gitee.com/polaris-paas/polaris-sdk)
