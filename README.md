@@ -746,6 +746,7 @@ Discovery【探索】微服务框架，基于Spring Cloud & Spring Cloud Alibaba
 | &nbsp;&nbsp;<img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> discovery-plugin-strategy-starter-sentinel-opentelemetry | 策略的Sentinel OpenTelemetry调用链的Starter |
 | &nbsp;&nbsp;<img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> discovery-plugin-strategy-starter-sentinel-opentracing | 策略的Sentinel OpenTracing调用链的Starter |
 | &nbsp;&nbsp;<img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> discovery-plugin-strategy-starter-sentinel-skywalking | 策略的Sentinel SkyWalking调用链的Starter |
+| &nbsp;&nbsp;<img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> discovery-plugin-strategy-starter-sentinel-micrometer | 策略的Sentinel Micrometer指标的Starter |
 | <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_south.png"> discovery-plugin-test | 测试模块目录 |
 | &nbsp;&nbsp;<img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_west.png"> discovery-plugin-test-starter-automation| 自动化测试的Starter |
 | <img src="http://nepxion.gitee.io/discovery/docs/icon-doc/direction_south.png"> discovery-console | 控制平台目录 |
@@ -2075,10 +2076,10 @@ public class MyGatewayStrategyRouteFilter extends DefaultGatewayStrategyRouteFil
     public String getRouteVersion() {
         LOG.info("自定义全链路版本权重路由");
 
-        List<Pair<String, Double>> weightList = new ArrayList<Pair<String, Double>>();
-        weightList.add(new ImmutablePair<String, Double>(aRouteVersion, 30D));
-        weightList.add(new ImmutablePair<String, Double>(bRouteVersion, 70D));
-        MapWeightRandom<String, Double> weightRandom = new MapWeightRandom<String, Double>(weightList);
+        List<Pair<String, Integer>> weightList = new ArrayList<Pair<String, Integer>>();
+        weightList.add(new ImmutablePair<String, Integer>(aRouteVersion, 30));
+        weightList.add(new ImmutablePair<String, Integer>(bRouteVersion, 70));
+        MapWeightRandom<String, Integer> weightRandom = new MapWeightRandom<String, Integer>(weightList);
 
         return weightRandom.random();
     }*/
@@ -2210,10 +2211,10 @@ public class MyZuulStrategyRouteFilter extends DefaultZuulStrategyRouteFilter {
     public String getRouteVersion() {
         LOG.info("自定义全链路版本权重路由");
 
-        List<Pair<String, Double>> weightList = new ArrayList<Pair<String, Double>>();
-        weightList.add(new ImmutablePair<String, Double>(aRouteVersion, 30D));
-        weightList.add(new ImmutablePair<String, Double>(bRouteVersion, 70D));
-        MapWeightRandom<String, Double> weightRandom = new MapWeightRandom<String, Double>(weightList);
+        List<Pair<String, Integer>> weightList = new ArrayList<Pair<String, Integer>>();
+        weightList.add(new ImmutablePair<String, Integer>(aRouteVersion, 30));
+        weightList.add(new ImmutablePair<String, Integer>(bRouteVersion, 70));
+        MapWeightRandom<String, Integer> weightRandom = new MapWeightRandom<String, Integer>(weightList);
 
         return weightRandom.random();
     }*/
@@ -2345,10 +2346,10 @@ public class MyServiceStrategyRouteFilter extends DefaultServiceStrategyRouteFil
     public String getRouteVersion() {
         LOG.info("自定义全链路版本权重路由");
 
-        List<Pair<String, Double>> weightList = new ArrayList<Pair<String, Double>>();
-        weightList.add(new ImmutablePair<String, Double>(aRouteVersion, 30D));
-        weightList.add(new ImmutablePair<String, Double>(bRouteVersion, 70D));
-        MapWeightRandom<String, Double> weightRandom = new MapWeightRandom<String, Double>(weightList);
+        List<Pair<String, Integer>> weightList = new ArrayList<Pair<String, Integer>>();
+        weightList.add(new ImmutablePair<String, Integer>(aRouteVersion, 30));
+        weightList.add(new ImmutablePair<String, Integer>(bRouteVersion, 70));
+        MapWeightRandom<String, Integer> weightRandom = new MapWeightRandom<String, Integer>(weightList);
 
         return weightRandom.random();
     }*/
@@ -5622,16 +5623,16 @@ spring.application.strategy.sentinel.limit.app.enabled=true
 # 执行Sentinel LimitApp高级限流熔断时候，以Http请求中的Header值作为关键Key。缺失则默认为n-d-service-id，即以服务名作为关键Key
 spring.application.strategy.sentinel.request.origin.key=n-d-service-id
 
-# 启动和关闭Sentinel Prometheus限流熔断次数统计功能。缺失则默认为false
-spring.application.strategy.sentinel.prometheus.enabled=true
-# 启动和关闭Sentinel Prometheus通过次数统计功能。缺失则默认为true
-spring.application.strategy.sentinel.prometheus.pass.qps.enabled=true
-# 启动和关闭Sentinel Prometheus阻塞次数统计功能。缺失则默认为true
-spring.application.strategy.sentinel.prometheus.block.qps.enabled=true
-# 启动和关闭Sentinel Prometheus成功次数统计功能。缺失则默认为true
-spring.application.strategy.sentinel.prometheus.success.qps.enabled=true
-# 启动和关闭Sentinel Prometheus异常次数统计功能。缺失则默认为true
-spring.application.strategy.sentinel.prometheus.exception.qps.enabled=true
+# 启动和关闭Sentinel Micrometer限流熔断次数统计功能。缺失则默认为false
+spring.application.strategy.sentinel.micrometer.enabled=true
+# 启动和关闭Sentinel Micrometer通过次数统计功能。缺失则默认为true
+spring.application.strategy.sentinel.micrometer.pass.qps.enabled=true
+# 启动和关闭Sentinel Micrometer阻塞次数统计功能。缺失则默认为true
+spring.application.strategy.sentinel.micrometer.block.qps.enabled=true
+# 启动和关闭Sentinel Micrometer成功次数统计功能。缺失则默认为true
+spring.application.strategy.sentinel.micrometer.success.qps.enabled=true
+# 启动和关闭Sentinel Micrometer异常次数统计功能。缺失则默认为true
+spring.application.strategy.sentinel.micrometer.exception.qps.enabled=true
 
 # 流量路由到指定的环境下。不允许为保留值default，缺失则默认为common
 spring.application.strategy.environment.route=common
