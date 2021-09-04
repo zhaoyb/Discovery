@@ -29,6 +29,18 @@ import com.nepxion.discovery.plugin.framework.util.MetadataUtil;
 import com.nepxion.discovery.plugin.registercenter.nacos.decorator.NacosServiceRegistryDecorator;
 
 public class NacosApplicationContextInitializer extends PluginApplicationContextInitializer {
+
+
+    /**
+     *
+     *  在初始化之后调用
+     *
+     * @param applicationContext
+     * @param bean
+     * @param beanName
+     * @return
+     * @throws BeansException
+     */
     @Override
     protected Object afterInitialization(ConfigurableApplicationContext applicationContext, Object bean, String beanName) throws BeansException {
         if (bean instanceof NacosServiceRegistry) {

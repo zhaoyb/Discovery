@@ -34,9 +34,19 @@ import com.nepxion.discovery.plugin.framework.generator.GitGenerator;
 import com.nepxion.discovery.plugin.framework.generator.GroupGenerator;
 import com.taobao.text.Color;
 
+/**
+ * 插件 应用程序 上下文 初始化
+ *
+ */
 public abstract class PluginApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
     private static final Logger LOG = LoggerFactory.getLogger(PluginApplicationContextInitializer.class);
 
+    /**
+     *
+     * spring 会调用这个方法，并传递ConfigurableApplicationContext对象进来。
+     *
+     * @param applicationContext
+     */
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if (!(applicationContext instanceof AnnotationConfigApplicationContext)) {
@@ -56,7 +66,7 @@ public abstract class PluginApplicationContextInitializer implements Application
             }*/
 
             LogoBanner logoBanner = new LogoBanner(PluginApplicationContextInitializer.class, "/com/nepxion/discovery/resource/logo.txt", "Welcome to Nepxion", 9, 5, new Color[] { Color.red, Color.green, Color.cyan, Color.blue, Color.yellow, Color.magenta, Color.red, Color.green, Color.cyan }, true);
-
+            // banner 打印
             NepxionBanner.show(logoBanner, new Description(BannerConstant.VERSION + ":", DiscoveryConstant.DISCOVERY_VERSION, 0, 1), new Description(BannerConstant.GITHUB + ":", BannerConstant.NEPXION_GITHUB + "/Discovery", 0, 1));
 
             initializeDefaultProperties(applicationContext);
