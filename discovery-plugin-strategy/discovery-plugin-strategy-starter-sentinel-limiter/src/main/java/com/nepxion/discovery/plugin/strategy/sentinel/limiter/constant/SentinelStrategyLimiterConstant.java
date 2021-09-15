@@ -11,6 +11,10 @@ package com.nepxion.discovery.plugin.strategy.sentinel.limiter.constant;
  */
 
 public class SentinelStrategyLimiterConstant {
+    /**
+     * 是否开启
+     *
+     */
     public static final String SPRING_APPLICATION_STRATEGY_SENTINEL_LIMIT_APP_ENABLED = "spring.application.strategy.sentinel.limit.app.enabled";
     public static final String SPRING_APPLICATION_STRATEGY_SENTINEL_REQUEST_ORIGIN_KEY = "spring.application.strategy.sentinel.request.origin.key";
 }
