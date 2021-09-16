@@ -72,12 +72,15 @@ public abstract class PluginApplicationContextInitializer implements Application
             initializeDefaultProperties(applicationContext);
         }
 
+        //  所有 bean 都构造完之后调用
         applicationContext.getBeanFactory().addBeanPostProcessor(new InstantiationAwareBeanPostProcessorAdapter() {
             @Override
             public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+                // 如果是DiscoveryClient类型
                 if (bean instanceof DiscoveryClient) {
+                    // 获取类型
                     DiscoveryClient discoveryClient = (DiscoveryClient) bean;
-
+                    // 将类型作为参数传入， 这里很重要， 在这里就完成了替换。
                     return new DiscoveryClientDecorator(discoveryClient, applicationContext);
                 } else {
                     return afterInitialization(applicationContext, bean, beanName);
