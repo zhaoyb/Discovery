@@ -9,6 +9,11 @@ package com.nepxion.discovery.common.constant;
  * @version 1.0
  */
 
+
+/**
+ * 所有的参数名称
+ *
+ */
 public class DiscoveryConstant {
     public static final String DISCOVERY_VERSION = "6.12.0-SNAPSHOT";
 

@@ -64,6 +64,8 @@ import com.taobao.text.Color;
 @EnableEventBus
 public class PluginAutoConfiguration {
     static {
+
+        // 打印banner
         LogoBanner logoBanner = new LogoBanner(PluginAutoConfiguration.class, "/com/nepxion/ribbon/resource/logo.txt", "Welcome to Nepxion", 6, 5, new Color[] { Color.red, Color.green, Color.cyan, Color.blue, Color.yellow, Color.magenta }, true);
 
         NepxionBanner.show(logoBanner, new Description("LoadBalancer:", LoadBalancerType.RIBBON.toString(), 0, 1), new Description(BannerConstant.GITHUB + ":", BannerConstant.NEPXION_GITHUB + "/Discovery", 0, 1));
@@ -153,63 +155,131 @@ public class PluginAutoConfiguration {
         return null;
     }
 
+    /**
+     *
+     * 实例注册时   过滤  执行器
+     *
+     * @return
+     */
     @Bean
     public RegisterListenerExecutor registerListenerExecutor() {
         return new RegisterListenerExecutor();
     }
 
+    /**
+     * 执行师 过滤 执行器
+     *
+     * @return
+     */
     @Bean
     public DiscoveryListenerExecutor discoveryListenerExecutor() {
         return new DiscoveryListenerExecutor();
     }
 
+    /**
+     * 负载 执行器
+     *
+     * @return
+     */
     @Bean
     public LoadBalanceListenerExecutor loadBalanceListenerExecutor() {
         return new LoadBalanceListenerExecutor();
     }
 
+    /**
+     * 注册时 Host 过滤
+     *
+     * @return
+     */
     @Bean
     @ConditionalOnMissingBean
     public HostFilterRegisterListener hostFilterRegisterListener() {
         return new HostFilterRegisterListener();
     }
 
+    /**
+     * 注册时 实例数 过滤
+     *
+     * @return
+     */
     @Bean
     @ConditionalOnMissingBean
     public CountFilterRegisterListener countFilterRegisterListener() {
         return new CountFilterRegisterListener();
     }
 
+    /**
+     * 调用时  host 过滤
+     *
+     * 会被注入到 DiscoveryListenerExecutor
+     *
+     * @return
+     */
     @Bean
     @ConditionalOnMissingBean
     public HostFilterDiscoveryListener hostFilterDiscoveryListener() {
         return new HostFilterDiscoveryListener();
     }
 
+    /**
+     * 调用时  版本 过滤
+     *
+     * 会被注入到 DiscoveryListenerExecutor
+     *
+     * @return
+     */
     @Bean
     @ConditionalOnMissingBean
     public VersionFilterDiscoveryListener versionFilterDiscoveryListener() {
         return new VersionFilterDiscoveryListener();
     }
 
+    /**
+     * 调用时  区域 过滤
+     *
+     * 会被注入到 DiscoveryListenerExecutor
+     *
+     * @return
+     */
     @Bean
     @ConditionalOnMissingBean
     public RegionFilterDiscoveryListener regionFilterDiscoveryListener() {
         return new RegionFilterDiscoveryListener();
     }
 
+    /**
+     * host 负载均衡
+     *
+     * 会被注入到LoadBalanceListenerExecutor
+     *
+     * @return
+     */
     @Bean
     @ConditionalOnMissingBean
     public HostFilterLoadBalanceListener hostFilterLoadBalanceListener() {
         return new HostFilterLoadBalanceListener();
     }
 
+    /**
+     * 版本 负载均衡
+     *
+     *会被注入到LoadBalanceListenerExecutor
+     *
+     * @return
+     */
     @Bean
     @ConditionalOnMissingBean
     public VersionFilterLoadBalanceListener versionFilterLoadBalanceListener() {
         return new VersionFilterLoadBalanceListener();
     }
 
+    /**
+     * 区域 负载均衡
+     *
+     * 会被注入到LoadBalanceListenerExecutor
+     *
+     * @return
+     */
     @Bean
     @ConditionalOnMissingBean
     public RegionFilterLoadBalanceListener regionFilterLoadBalanceListener() {

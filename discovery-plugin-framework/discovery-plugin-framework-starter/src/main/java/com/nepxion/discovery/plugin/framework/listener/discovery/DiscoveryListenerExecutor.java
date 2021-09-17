@@ -20,6 +20,7 @@ public class DiscoveryListenerExecutor {
     private List<DiscoveryListener> discoveryListenerList;
 
     public void onGetInstances(String serviceId, List<ServiceInstance> instances) {
+        // 拿到所有的discoveryListenerList实例， 依次执行
         for (DiscoveryListener discoveryListener : discoveryListenerList) {
             discoveryListener.onGetInstances(serviceId, instances);
         }

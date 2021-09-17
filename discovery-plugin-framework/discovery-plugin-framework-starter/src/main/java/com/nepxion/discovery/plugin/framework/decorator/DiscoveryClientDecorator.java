@@ -24,6 +24,7 @@ import com.nepxion.discovery.plugin.framework.listener.discovery.DiscoveryListen
 /**
  *
  * DiscoveryClient 是 spring cloud 下的一个类，  这里通过继承实现了一些方法
+ * 在实际运行的时候， DiscoveryClientDecorator 会替换 DiscoveryClient
  *
  *
  */
@@ -54,7 +55,7 @@ public class DiscoveryClientDecorator implements DiscoveryClient, DiscoveryClien
 
     @Override
     public List<ServiceInstance> getInstances(String serviceId) {
-        // 根据服务 Id， 获取所有的服务实例
+        // 根据服务 Id， 调用spring cloud的方法获取所有的服务实例
         List<ServiceInstance> instances = getRealInstances(serviceId);
         // 开关是否开启
         Boolean discoveryControlEnabled = PluginContextAware.isDiscoveryControlEnabled(environment);

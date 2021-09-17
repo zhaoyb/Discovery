@@ -25,15 +25,31 @@ import com.nepxion.discovery.plugin.framework.loadbalance.weight.StrategyWeightR
 import com.netflix.loadbalancer.PredicateBasedRule;
 import com.netflix.loadbalancer.Server;
 
+/**
+ * 负载均衡器
+ *
+ */
 public abstract class PredicateBasedRuleDecorator extends PredicateBasedRule {
     private static final Logger LOG = LoggerFactory.getLogger(PredicateBasedRuleDecorator.class);
 
+    /**
+     * 是否重试
+     *
+     */
     @Value("${" + DiscoveryConstant.SPRING_APPLICATION_NO_SERVERS_RETRY_ENABLED + ":false}")
     private Boolean retryEnabled;
 
+    /**
+     * 重试次数
+     *
+     */
     @Value("${" + DiscoveryConstant.SPRING_APPLICATION_NO_SERVERS_RETRY_TIMES + ":5}")
     private Integer retryTimes;
 
+    /**
+     * 重试间隔
+     *
+     */
     @Value("${" + DiscoveryConstant.SPRING_APPLICATION_NO_SERVERS_RETRY_AWAIT_TIME + ":2000}")
     private Integer retryAwaitTime;
 
@@ -45,9 +61,16 @@ public abstract class PredicateBasedRuleDecorator extends PredicateBasedRule {
 
     // 必须执行getEligibleServers，否则叠加执行权重规则和版本区域策略会失效
     private List<Server> getServerList(Object key) {
+        // 这里应该是调用底层方法，获取服务实例
         return getPredicate().getEligibleServers(getLoadBalancer().getAllServers(), key);
     }
 
+    /**
+     * 获取
+     *
+     * @param key
+     * @return
+     */
     private List<Server> getRetryableServerList(Object key) {
         List<Server> serverList = getServerList(key);
         for (int i = 0; i < retryTimes; i++) {
@@ -69,6 +92,12 @@ public abstract class PredicateBasedRuleDecorator extends PredicateBasedRule {
         return serverList;
     }
 
+    /**
+     * 负载
+     *
+     * @param key
+     * @return
+     */
     @Override
     public Server choose(Object key) {
         boolean isTriggered = false;
@@ -78,14 +107,17 @@ public abstract class PredicateBasedRuleDecorator extends PredicateBasedRule {
             isTriggered = true;
 
             List<Server> serverList = retryEnabled ? getRetryableServerList(key) : getServerList(key);
+            // 是否有权重设置
             boolean isWeightChecked = strategyWeightRandomLoadBalance.checkWeight(serverList, strategyWeightFilterEntity);
             if (isWeightChecked) {
                 try {
+                    // 负载算法
                     return strategyWeightRandomLoadBalance.choose(serverList, strategyWeightFilterEntity);
                 } catch (Exception e) {
                     return super.choose(key);
                 }
             } else {
+                // 调用父类的 负载实现
                 return super.choose(key);
             }
         }

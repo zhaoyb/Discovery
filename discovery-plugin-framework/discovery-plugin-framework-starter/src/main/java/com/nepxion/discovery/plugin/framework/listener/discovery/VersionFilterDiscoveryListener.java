@@ -24,6 +24,10 @@ import com.nepxion.discovery.common.entity.RuleEntity;
 import com.nepxion.discovery.common.entity.VersionEntity;
 import com.nepxion.discovery.common.entity.VersionFilterEntity;
 
+/**
+ * 版本过滤器
+ *
+ */
 public class VersionFilterDiscoveryListener extends AbstractDiscoveryListener {
     @Override
     public void onGetInstances(String serviceId, List<ServiceInstance> instances) {
@@ -39,16 +43,19 @@ public class VersionFilterDiscoveryListener extends AbstractDiscoveryListener {
             return;
         }
 
+        // 获取规则
         RuleEntity ruleEntity = pluginAdapter.getRule();
         if (ruleEntity == null) {
             return;
         }
 
+        // 获取规则实体
         DiscoveryEntity discoveryEntity = ruleEntity.getDiscoveryEntity();
         if (discoveryEntity == null) {
             return;
         }
 
+        // 获取版本过滤实体
         VersionFilterEntity versionFilterEntity = discoveryEntity.getVersionFilterEntity();
         if (versionFilterEntity == null) {
             return;
@@ -59,6 +66,7 @@ public class VersionFilterDiscoveryListener extends AbstractDiscoveryListener {
             return;
         }
 
+        // 根据消费端Id 获取版本配置
         List<VersionEntity> versionEntityList = versionEntityMap.get(consumerServiceId);
         if (CollectionUtils.isEmpty(versionEntityList)) {
             return;
@@ -73,7 +81,9 @@ public class VersionFilterDiscoveryListener extends AbstractDiscoveryListener {
             if (StringUtils.equalsIgnoreCase(providerServiceName, providerServiceId)) {
                 providerConditionDefined = true;
 
+                // 消费端 版本号
                 List<String> consumerVersionValueList = versionEntity.getConsumerVersionValueList();
+                // 提供端 版本号
                 List<String> providerVersionValueList = versionEntity.getProviderVersionValueList();
 
                 // 判断consumer-version-value值是否包含当前消费端的版本号

@@ -69,6 +69,7 @@ public class CountFilterRegisterListener extends AbstractRegisterListener {
             return;
         }
 
+        // 注册控制，如果超过了配置的最大注册数， 则抛出异常
         int count = discoveryClient.getRealInstances(serviceId).size();
         if (count >= maxCount) {
             onRegisterFailure(maxCount, serviceId, host, port);

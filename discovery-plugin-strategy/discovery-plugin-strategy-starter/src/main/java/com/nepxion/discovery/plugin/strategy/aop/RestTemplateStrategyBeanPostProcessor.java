@@ -23,6 +23,14 @@ public class RestTemplateStrategyBeanPostProcessor implements BeanPostProcessor 
         return bean;
     }
 
+    /**
+     * 修改 resttemplate, 新增了一个interceptors
+     *
+     * @param bean
+     * @param beanName
+     * @return
+     * @throws BeansException
+     */
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if (bean instanceof RestTemplate) {
